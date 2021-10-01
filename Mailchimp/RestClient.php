@@ -4,6 +4,7 @@ namespace Hype\MailchimpBundle\Mailchimp;
 
 use Buzz\Browser,
     Buzz\Client\Curl;
+use Nyholm\Psr7\Factory\Psr17Factory;
 
 class RestClient
 {
@@ -60,7 +61,9 @@ class RestClient
      */
     private function prepareCurl()
     {
-        $curl = new Curl();
+        $psr17Factory = new Psr17Factory();
+        
+        $curl = new Curl($psr17Factory);
         $curl->setOption(CURLOPT_USERAGENT, 'HypeMailchimp');
         $curl->setVerifyPeer(false);
         $curl->setTimeout($this->config['timeout']);
