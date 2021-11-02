@@ -64,9 +64,9 @@ class RestClient
         $psr17Factory = new Psr17Factory();
         
         $curl = new Curl($psr17Factory);
-        $curl->setOption(CURLOPT_USERAGENT, 'HypeMailchimp');
-        $curl->setVerifyPeer(false);
-        $curl->setTimeout($this->config['timeout']);
+        //$curl->setOption(CURLOPT_USERAGENT, 'HypeMailchimp');
+        //$curl->setVerifyPeer(false);
+        //$curl->setTimeout($this->config['timeout']);
         return $curl;
     }
 
