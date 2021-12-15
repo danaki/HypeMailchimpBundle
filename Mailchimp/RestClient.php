@@ -44,7 +44,7 @@ class RestClient
             $url = $this->dataCenter . '2.0/' . $apiCall;
         }
         $curl = $this->prepareCurl();
-        $browser = new Browser($curl);
+        $browser = new Browser($curl, new \Nyholm\Psr7\Factory\Psr17Factory());
         $payload = json_encode($payload);
         $headers = array(
             "Accept" => "application/json",
@@ -52,7 +52,7 @@ class RestClient
         );
         $response = $browser->post($url, $headers, $payload);
 
-        return $response->getContent();
+        return $response->getBody()->__toString();
     }
 
     /**
